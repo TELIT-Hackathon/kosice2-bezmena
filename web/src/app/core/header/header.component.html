@@ -1,0 +1,41 @@
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  fxLayout.lt-sm="column"
+  fxLayoutAlign.lt-sm="start stretch"
+  fxLayoutGap.lt-sm="1rem"
+  class="header-container"
+>
+  <div
+    fxFlex="1 1 auto"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="2.4rem"
+  >
+    <div fxLayoutAlign="center center" fxLayoutGap=".1rem">
+      <button
+        *ngIf="!sidenav.opened"
+        mat-icon-button
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon class="text-primary">menu</mat-icon>
+      </button>
+      <!-- <button mat-icon-button [routerLink]="['/news']">
+        <mat-icon
+          class="text-accent"
+          matBadge="!"
+          matBadgeColor="warn"
+          matBadgeHidden="false"
+          >notifications</mat-icon
+        >
+      </button> -->
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="text-primary">Housing</h1>
+      <h1 class="text-accent">.</h1>
+    </div>
+  </div>
+  <div fxHide.lt-sm fxLayoutAlign="center center">
+    <span class="text-gray-8">Používateľ</span>
+  </div>
+</div>

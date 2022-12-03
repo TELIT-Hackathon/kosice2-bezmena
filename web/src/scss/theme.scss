@@ -1,0 +1,88 @@
+@use "sass:map";
+@use "colors.scss";
+@import "../../node_modules/@angular/material/theming";
+
+$blog-typography: mat-typography-config(
+  $font-family: "Montserrat, sans-serif",
+);
+
+@include mat-core($blog-typography);
+
+$primary: (
+  50: #e4f0ff,
+  100: #bcdaff,
+  200: #8fc1ff,
+  300: #62a8ff,
+  400: #4096ff,
+  500: #1e83ff,
+  600: #1a7bff,
+  700: #1670ff,
+  800: #1266ff,
+  900: #0a53ff,
+  A100: #ffffff,
+  A200: #f5f7ff,
+  A400: #c2d1ff,
+  A700: #a8beff,
+  contrast: (
+    50: #0a3d62,
+    100: #0a3d62,
+    200: #0a3d62,
+    300: #0a3d62,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #0a3d62,
+    A200: #0a3d62,
+    A400: #0a3d62,
+    A700: #0a3d62,
+  ),
+);
+
+$accent: (
+  50: #fff3e4,
+  100: #ffe1bc,
+  200: #ffcd8f,
+  300: #ffb862,
+  400: #ffa940,
+  500: #ff9a1e,
+  600: #ff921a,
+  700: #ff8816,
+  800: #ff7e12,
+  900: #ff6c0a,
+  A100: #ffffff,
+  A200: #fff8f5,
+  A400: #ffd8c2,
+  A700: #ffc7a8,
+  contrast: (
+    50: #0a3d62,
+    100: #0a3d62,
+    200: #0a3d62,
+    300: #0a3d62,
+    400: #0a3d62,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #0a3d62,
+    A200: #0a3d62,
+    A400: #0a3d62,
+    A700: #0a3d62,
+  ),
+);
+
+$blog-primary: mat-palette($primary);
+$blog-accent: mat-palette($accent);
+$blog-warn: mat-palette($mat-red);
+
+$blog-theme: mat-light-theme($blog-primary, $blog-accent, $blog-warn);
+
+@include angular-material-theme($blog-theme);
+
+.mat-menu-content:not(:empty) {
+  padding: 0.5rem;
+  margin: 1rem 0;
+}

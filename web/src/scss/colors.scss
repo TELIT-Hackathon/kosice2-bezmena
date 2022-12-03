@@ -1,0 +1,86 @@
+$colors: (
+  "primary": #007fff,
+  "accent": #ff8000,
+  "white": #ffffff,
+  "black": #000000,
+  "gray": (
+    "1": #262626,
+    "2": #383838,
+    "3": #4b4b4b,
+    "4": #6b6b6b,
+    "5": #737373,
+    "6": #7c7c7c,
+    "7": #a3a3a3,
+    "8": #b2b2b2,
+    "9": #d0d0d0,
+    "10": #dcdcdc,
+    "11": #ededed,
+    "12": #f8f8f8,
+  ),
+  "func": (
+    "blue": #009de0,
+    "blue-light": #e5f5fd,
+    "yellow": #fecb00,
+    "yellow-light": #fff7d9,
+    "green": #46a800,
+    "red": #d90000,
+  ),
+  "yellow": (
+    "base": #ffd329,
+    "light": #ffde5d,
+    "dark": #dbad39,
+  ),
+  "green": (
+    "base": #bfcb44,
+    "light": #cfd873,
+    "dark": #889130,
+  ),
+  "orange": (
+    "base": #ff9a1e,
+    "light": #ffb356,
+    "dark": #d48936,
+  ),
+  "petrol": (
+    "base": #1bada2,
+    "light": #65c8c0,
+    "dark": #218076,
+  ),
+  "light-blue": (
+    "base": #53baf2,
+    "light": #7ecbf5,
+    "dark": #317cb3,
+  ),
+  "dark-blue": (
+    "base": #1063ad,
+    "light": #529ad6,
+    "dark": #235482,
+  ),
+);
+
+@mixin color-modifiers($attribute: "color") {
+  @each $name, $color in $colors {
+    &-#{$name} {
+      @if type-of($color) == "map" {
+        @each $tone, $hex in $color {
+          &-#{$tone} {
+            #{$attribute}: $hex;
+          }
+        }
+      } @else {
+        #{$attribute}: $color;
+      }
+    }
+  }
+}
+
+.text {
+  @include color-modifiers;
+}
+
+.bg {
+  @include color-modifiers($attribute: "background-color");
+}
+
+.border {
+  @include color-modifiers($attribute: "border-color");
+}

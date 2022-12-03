@@ -1,0 +1,138 @@
+<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="2rem">
+  <app-user-card
+    *ngIf="profile | async as data"
+    [profile]="data"
+    [subs]="subscribers"
+    [sups]="subscriptions.data"
+    ngClass.gt-md="banner-container"
+  ></app-user-card>
+  <span class="text-bold text-accent">My articles:</span>
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1rem">
+    <ng-container *ngIf="!!articles.data; else loading"
+      ><div fxLayout="column" fxLayoutAlign="center start">
+        <div
+          fxFill
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="table-toolbar rounded-lg bg-gray-12"
+        >
+          <mat-form-field
+            ><mat-label><mat-icon>search</mat-icon> Search for...</mat-label
+            ><input
+              matInput
+              (keyup)="applyFilter(input.value)"
+              autocomplete="off"
+              placeholder="Search for..."
+              #input
+            /><button
+              *ngIf="input.value"
+              mat-button
+              matSuffix
+              mat-icon-button
+              class="text-accent"
+              (click)="applyFilter(''); input.value = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button></mat-form-field
+          >
+        </div>
+        <mat-table [dataSource]="articles" [trackBy]="trackBy"
+          ><ng-container matColumnDef="id"
+            ><mat-header-cell
+              *matHeaderCellDef
+              fxFlex="10%"
+              fxLayoutAlign="start center"
+              >#</mat-header-cell
+            ><mat-cell
+              *matCellDef="let art; let index = index"
+              fxFlex="10%"
+              fxLayoutAlign="start center"
+              >{{ index }}</mat-cell
+            ></ng-container
+          ><ng-container matColumnDef="title"
+            ><mat-header-cell *matHeaderCellDef>Title</mat-header-cell
+            ><mat-cell
+              *matCellDef="let art"
+              [routerLink]="['/news', art.pk]"
+              class="text-primary text-bold"
+              style="cursor: pointer"
+              >{{ art.title }}</mat-cell
+            ></ng-container
+          ><ng-container matColumnDef="tags"
+            ><mat-header-cell
+              *matHeaderCellDef
+              fxFlex="15%"
+              fxLayoutAlign="end center"
+              >Tags</mat-header-cell
+            ><mat-cell
+              mat-cell
+              *matCellDef="let art"
+              fxFlex="15%"
+              fxLayoutAlign="end center"
+              >{{ art.tags.length }}</mat-cell
+            ></ng-container
+          ><ng-container matColumnDef="action"
+            ><mat-header-cell
+              *matHeaderCellDef
+              fxFlex="15%"
+              fxLayoutAlign="end center"
+              >Tags</mat-header-cell
+            ><mat-cell
+              mat-cell
+              *matCellDef="let art"
+              fxFlex="15%"
+              fxLayoutAlign="end center"
+              ><mat-icon
+                color="accent"
+                matTooltip="Edit article"
+                style="cursor: pointer"
+                (click)="edit(art)"
+                >edit</mat-icon
+              ></mat-cell
+            ></ng-container
+          ><mat-header-row *matHeaderRowDef="columns"></mat-header-row
+          ><mat-row *matRowDef="let rowData; columns: columns"></mat-row
+        ></mat-table>
+      </div>
+      <mat-paginator
+        [length]="articles.data.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 15, 20]"
+        [showFirstLastButtons]="true"
+      ></mat-paginator></ng-container
+    ><ng-template #loading
+      ><div fxFill fxLayout="column" fxLayoutAlign="center center">
+        <mat-spinner diameter="60"></mat-spinner></div
+    ></ng-template>
+  </div>
+  <span class="text-bold text-accent">Users you are subscribed to:</span>
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1rem">
+    <ng-container *ngIf="!!subscriptions.data; else loading"
+      ><mat-table [dataSource]="subscriptions" [trackBy]="trackBy"
+        ><ng-container matColumnDef="email"
+          ><mat-header-cell
+            *matHeaderCellDef
+            fxFlex="30%"
+            fxLayoutAlign="start center"
+            >Username</mat-header-cell
+          ><mat-cell
+            *matCellDef="let sub"
+            fxFlex="30%"
+            fxLayoutAlign="start center"
+            >{{ sub.email }}</mat-cell
+          ></ng-container
+        ><ng-container matColumnDef="username"
+          ><mat-header-cell *matHeaderCellDef>Username</mat-header-cell
+          ><mat-cell *matCellDef="let sub">{{
+            sub.username
+          }}</mat-cell></ng-container
+        ><mat-header-row *matHeaderRowDef="columnsSub"></mat-header-row
+        ><mat-row
+          *matRowDef="let rowData; columns: columnsSub"
+        ></mat-row></mat-table></ng-container
+    ><ng-template #loading
+      ><div fxFill fxLayout="column" fxLayoutAlign="center center">
+        <mat-spinner diameter="60"></mat-spinner></div
+    ></ng-template>
+  </div>
+</div>

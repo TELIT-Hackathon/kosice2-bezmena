@@ -1,0 +1,51 @@
+<mat-sidenav-container fxFill class="bg-white">
+  <mat-sidenav
+    #sidenav
+    [mode]="isBiggerScreen() ? 'over' : 'side'"
+    [(opened)]="isOpened"
+    fixedInViewport="true"
+    disableClose="false"
+    class="bg-primary"
+  >
+    <div
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxFlex="1 1 auto"
+      fxLayoutGap="10vh"
+    >
+      <div
+        fxFlex="60px"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+        style="padding: 12px"
+      >
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon class="text-accent">close</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column">
+        <button
+          *ngFor="let item of menuItems"
+          mat-button
+          class="nav-button text-white"
+          [routerLink]="item.path"
+          routerLinkActive="active-button"
+          [routerLinkActiveOptions]="item.activeLinkOptions"
+        >
+          <mat-icon class="text-white">{{ item.icon }}</mat-icon
+          ><span>{{ item.label }}</span>
+        </button>
+      </div>
+      <button mat-button class="nav-button text-white">
+        <mat-icon class="text-white">logout</mat-icon><span>Logout</span>
+      </button>
+    </div></mat-sidenav
+  ><mat-sidenav-content fxLayout="column" fxLayoutAlign="start stretch"
+    ><app-header [sidenav]="sidenav" class="bg-white"></app-header>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      class="content-container"
+    >
+      <router-outlet></router-outlet></div></mat-sidenav-content
+></mat-sidenav-container>

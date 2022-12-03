@@ -1,0 +1,53 @@
+$weights: (
+  "thin": 250,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+  "extra-bold": 800,
+);
+
+@mixin weight-modifiers() {
+  @each $name, $weigth in $weights {
+    &-#{$name} {
+      font-weight: $weigth;
+    }
+  }
+}
+
+.text {
+  @include weight-modifiers;
+}
+
+$sizes: (
+  "xs": 12px,
+  "sm": 13px,
+  "base": 14px,
+  "lg": 15px,
+  "xl": 16px,
+  "2xl": 20px,
+  "3xl": 24px,
+  "4xl": 34px,
+  "5xl": 45px,
+  "6xl": 56px,
+  "7xl": 112px,
+);
+
+@mixin size-modifiers() {
+  @each $name, $size in $sizes {
+    &-#{$name} {
+      font-size: $size;
+    }
+  }
+}
+
+.text {
+  @include size-modifiers();
+}
+
+.italic {
+  font-style: italic;
+}
+
+.non-italic {
+  font-style: normal;
+}

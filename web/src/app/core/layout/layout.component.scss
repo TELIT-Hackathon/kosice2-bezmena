@@ -1,0 +1,47 @@
+mat-sidenav {
+    width: 280px;
+    box-shadow: 6px 0 8px -6px #aaa;
+    border: 0;
+  }
+  
+  .content-container {
+    padding: 1.5rem 2rem;
+  }
+  
+  @media only screen and (max-width: 599px) {
+    .content-container {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+  
+  .nav-button {
+    border-radius: 0;
+    padding: 0.6rem 2.8rem;
+    transition: 0.5s;
+    font-weight: 300;
+    font-size: 15px;
+    text-align: start;
+    mat-icon {
+      margin-right: 1rem;
+    }
+  }
+  
+  .active-button {
+    background-color: #ff8000;
+  }
+  
+  mat-icon {
+    cursor: pointer;
+  }
+  
+  .logo {
+    margin: 0;
+    font-weight: 900;
+  }
+  
+  app-header {
+    position: sticky;
+    top: 0;
+    z-index: 1234567890;
+  }
+  
