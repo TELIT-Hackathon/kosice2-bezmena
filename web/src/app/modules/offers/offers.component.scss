@@ -1,0 +1,36 @@
+@import "../../../scss/colors.scss";
+
+:host::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+:host::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0;
+}
+
+.article-banner-container {
+  box-shadow: 6px 4px 12px -8px #aaa;
+  border: 1px solid #eee;
+  border-radius: 0.6rem;
+  padding: 1rem;
+}
+
+h2 {
+  margin-bottom: 0;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #007fff;
+  }
+  font-weight: 700;
+}
+
+.article-description {
+  text-align: justify;
+}
+
+@media only screen and (max-width: 599px) {
+  .article-description {
+    text-align: center;
+  }
+}

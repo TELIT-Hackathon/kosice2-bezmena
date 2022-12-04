@@ -21,10 +21,9 @@ export class ProfileComponent implements OnInit {
   profile = new BehaviorSubject<any>(null);
   subscribers: any[] = [];
 
-  constructor(
-    private api: ApiService,
-    private router: Router
-  ) {}
+  moment = new Date();
+
+  constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     // this.profile = {};
@@ -44,10 +43,7 @@ export class ProfileComponent implements OnInit {
   ngAfterViewInit(): void {
     this.articles.paginator = this.paginator;
 
-    this.articles.filterPredicate = (
-      article: any,
-      filter: string
-    ): boolean => {
+    this.articles.filterPredicate = (article: any, filter: string): boolean => {
       if (article.title.toLowerCase().includes(filter)) {
         return true;
       }

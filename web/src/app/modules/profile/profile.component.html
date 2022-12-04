@@ -1,5 +1,5 @@
-<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="2rem">
-  <app-user-card
+<div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="1.4rem">
+  <!-- <app-user-card
     *ngIf="profile | async as data"
     [profile]="data"
     [subs]="subscribers"
@@ -134,5 +134,128 @@
       ><div fxFill fxLayout="column" fxLayoutAlign="center center">
         <mat-spinner diameter="60"></mat-spinner></div
     ></ng-template>
+  </div> -->
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4rem">
+    <img
+      src="../../../assets/images/image.jpeg"
+      width="150px"
+      style="border-radius: 50%; box-shadow: 4px 0 12px -6px #aaa"
+    />
+    <div
+      fxFlex
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxLayoutGap="2rem"
+    >
+      <span class="text-extra-bold text-4xl">TheKo siceMan</span>
+      <div
+        fxLayoutGap="0.6rem"
+        fxLayoutAlign="start center"
+        class="text-gray-4"
+      >
+        <mat-icon class="text-accent">work</mat-icon
+        ><span class="text-2xl">Retired</span>
+      </div>
+    </div>
+  </div>
+  <span class="text-xl text-gray-4">Contact Information</span>
+  <div
+    fxFlex="1 1 auto"
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    fxLayoutAlign="space-between stretch"
+    class="description"
+  >
+    <div fxLayout="column" fxFlex="49%" fxFlex.lt-md="1 1 auto">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+          <mat-icon>mail</mat-icon><span class="text-bold">E-mail:</span>
+        </div>
+        <span>tester@aaaaaa.de</span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+          <mat-icon>phone</mat-icon><span class="text-bold">Phone:</span>
+        </div>
+        <span>+421 911 123 456</span>
+      </div>
+    </div>
+    <mat-divider vertical fxHide.lt-md></mat-divider>
+    <div fxLayout="column" fxFlex="49%" fxFlex.lt-md="1 1 auto">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+          <mat-icon>home</mat-icon><span class="text-bold">Street:</span>
+        </div>
+        <span>Bozeny Nemcovej, 123</span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+          <mat-icon
+            ><span class="material-symbols-outlined">
+              local_post_office
+            </span></mat-icon
+          ><span class="text-bold">Postal code:</span>
+        </div>
+        <span>040 01</span>
+      </div>
+    </div>
+  </div>
+  <div
+    fxFlex="1 1 auto"
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    fxLayoutAlign="space-between stretch"
+    fxLayoutGap="1rem"
+  >
+    <div
+      fxLayout="column"
+      fxFlex="49%"
+      fxFlex.lt-md="1 1 auto"
+      fxLayoutGap="0.6rem"
+    >
+      <span class="text-base text-extra-bold">Support:</span>
+      <p class="description">
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout. The point of
+        using Lorem Ipsum is that it has a more-or-less normal distribution of
+        letters, as opposed to using 'Content here, content here', making it
+        look like readable English. Many desktop publishing packages and web
+        page editors now use Lorem Ipsum as their default model text, and a
+        search for 'lorem ipsum' will uncover many web sites still in their
+        infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).
+      </p>
+    </div>
+    <div
+      fxLayout="column"
+      fxFlex="49%"
+      fxFlex.lt-md="1 1 auto"
+      fxLayoutGap="0.6rem"
+    >
+      <span class="text-base text-extra-bold">Info:</span>
+      <div fxLayout="column" fxLayoutGap="1rem" class="description">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="text-bold">Income:</span>
+          <span>Pension</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="text-bold">Accomondated:</span>
+          <span class="text-func-green">Yes</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="text-bold">Location:</span>
+          <span>Rampova, 1, 040 01</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="text-bold">Rooms:</span>
+          <span>1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutGap="0.75rem" fxLayoutAlign="end center">
+    <button mat-flat-button type="button" color="primary">
+      Offer property
+    </button>
   </div>
 </div>

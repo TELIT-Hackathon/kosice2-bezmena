@@ -8,16 +8,30 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
+        path: 'offers',
+        loadChildren: () =>
+          import('./modules/offers/offers.module').then(
+            (m) => m.OffersModule
+          ),
+      },
+      {
         path: 'profile',
         loadChildren: () =>
           import('./modules/profile/profile.module').then(
             (m) => m.ProfileModule
           ),
       },
-      { path: '**', redirectTo: 'profile' },
+      {
+        path: 'create',
+        loadChildren: () =>
+          import('./modules/register/register.module').then(
+            (m) => m.RegisterModule
+          ),
+      },
+      { path: '**', redirectTo: 'offers' },
     ],
   },
-  { path: '**', redirectTo: 'profile' },
+  { path: '**', redirectTo: 'offers' },
 ];
 
 @NgModule({

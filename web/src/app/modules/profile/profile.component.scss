@@ -1,3 +1,16 @@
+@use "sass:map";
+@use "../../../scss/colors.scss";
+
+.description {
+  padding: 0.8rem 1rem;
+  border-width: thin;
+  border-style: solid;
+  border-color: #eee;
+  border-radius: 0.25rem;
+  margin: 0;
+  box-shadow: 6px 4px 12px -8px #aaa;
+}
+
 .banner-container {
   width: 55vw;
   margin: 0 auto;

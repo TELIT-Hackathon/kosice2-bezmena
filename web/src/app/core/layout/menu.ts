@@ -9,10 +9,10 @@ export interface MenuItem {
 
 export const MENU: MenuItem[] = [
   {
-    path: ['/news'],
+    path: ['/offers'],
     activeLinkOptions: { exact: true },
-    icon: 'favorite',
-    label: 'Board',
+    icon: 'dashboard',
+    label: 'Offers',
   },
   {
     path: ['/search'],
@@ -24,10 +24,10 @@ export const MENU: MenuItem[] = [
     path: ['/create'],
     activeLinkOptions: { exact: true },
     icon: 'edit',
-    label: 'Write',
+    label: 'Create',
   },
   {
-    path: ['/my-profile'],
+    path: ['/profile'],
     activeLinkOptions: { exact: true },
     icon: 'person',
     label: 'Profile',

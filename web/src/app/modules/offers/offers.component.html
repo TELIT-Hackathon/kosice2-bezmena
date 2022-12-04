@@ -1,1 +1,172 @@
-<p>offers works!</p>
+<div fxLayout="column" fxLayoutGap="2rem" fxLayoutAlign="start stretch">
+  <mat-slide-toggle [(ngModel)]="isChecked" style="margin-bottom: 1rem"
+    >Search by tags</mat-slide-toggle
+  >
+  <form
+    [formGroup]="searchForm"
+    fxLayout="column"
+    fxLayoutAlign="center stretch"
+    fxLayoutGap=".4rem"
+  >
+    <div
+      fxLayout="row"
+      fxLayoutGap="2rem"
+      fxLayout.lt-sm="column"
+      fxLayoutGap.lt-sm="1rem"
+    >
+      <section *ngIf="!isChecked" fxLayout="row" fxFlex="1 1 auto">
+        <mat-form-field appearance="outline" fxFlex="1 1 auto"
+          ><mat-label>Text</mat-label
+          ><input
+            matInput
+            formControlName="search"
+            type="text"
+            aria-label="Search input"
+            spellcheck="false"
+            autocomplete="off"
+            placeholder="e.g. Technical University"
+          /><mat-icon
+            matSuffix
+            *ngIf="search.value.trim().length"
+            (click)="search.setValue('')"
+            >close</mat-icon
+          ></mat-form-field
+        >
+      </section>
+      <section *ngIf="isChecked" fxLayout="row" fxFlex="1 1 auto">
+        <mat-form-field appearance="outline" fxFlex="1 1 auto"
+          ><mat-label>Tags</mat-label>
+          <mat-chip-list #tagsChips>
+            <mat-chip
+              *ngFor="let tag of tagy"
+              (removed)="removeChip(tag)"
+              class="bg-accent text-white"
+              >{{ tag }} <mat-icon matChipRemove>cancel</mat-icon></mat-chip
+            ><input
+              #tagInput
+              formControlName="tags"
+              matInput
+              type="text"
+              aria-label="Tags"
+              spellcheck="false"
+              autocomplete="off"
+              placeholder="e.g. university"
+              [matAutocomplete]="auto"
+              [matChipInputFor]="tagsChips"
+          /></mat-chip-list>
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            autoActiveFirstOption="true"
+            (optionSelected)="addChip($event)"
+          >
+            <mat-option
+              *ngFor="let tag of filteredTags | async"
+              [value]="tag.name"
+            >
+              {{ tag.name }}
+            </mat-option>
+          </mat-autocomplete></mat-form-field
+        >
+      </section>
+      <button mat-flat-button color="primary" (click)="searching()">
+        Find
+      </button>
+    </div>
+  </form>
+
+  <div fxLayout="column" fxLayoutGap="1rem" class="article-banner-container">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
+      <img
+        src="../../../assets/images/image.jpeg"
+        width="52px"
+        style="border-radius: 50%; box-shadow: 4px 0 12px -6px #aaa"
+      />
+      <div fxFlex fxLayout="column" fxLayoutAlign="start stretch">
+        <h2 class="text-accent">Some type of room</h2>
+      </div>
+    </div>
+    <!-- <h2 class="text-accent" [routerLink]="['/news', article.pk]"> -->
+    <div
+      fxFlex="1 1 auto"
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="space-between stretch"
+      class="description"
+    >
+      <div fxLayout="column" fxFlex="49%" fxFlex.lt-md="1 1 auto">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+            <mat-icon>pin_drop</mat-icon><span class="text-bold">Address:</span>
+          </div>
+          <span>Letna 1, 040 01 Košice</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+            <mat-icon>phone</mat-icon><span class="text-bold">Phone:</span>
+          </div>
+          <span>+421 911 123 456</span>
+        </div>
+      </div>
+      <mat-divider vertical fxHide.lt-md></mat-divider>
+      <div fxLayout="column" fxFlex="49%" fxFlex.lt-md="1 1 auto">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+            <mat-icon>home</mat-icon><span class="text-bold">Rooms:</span>
+          </div>
+          <span>2</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayoutGap="0.6rem" fxLayoutAlign="start center">
+            <mat-icon
+              ><span class="material-symbols-outlined">
+                payments
+              </span></mat-icon
+            ><span class="text-bold">Price:</span>
+          </div>
+          <span>60.00 €</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      fxFlex="1 1 auto"
+      fxLayout="row"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="space-between stretch"
+      class="description"
+    >
+      <div fxLayout="column" fxFlex="49%" fxFlex.lt-md="1 1 auto">
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <span class="text-bold">Description:</span>
+          <span fxFlex="75%" style="text-align: justify"
+            >It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed...</span
+          >
+        </div>
+      </div>
+      <mat-divider vertical fxHide.lt-md></mat-divider>
+      <div fxLayout="column" fxFlex="49%" fxFlex.lt-md="1 1 auto">
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <span class="text-bold">Photos:</span>
+          <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem">
+            <img src="../../../assets/images/dji-0774.jpeg" width="100px" />
+            <img src="../../../assets/images/dji-0774.jpeg" width="100px" />
+            <img src="../../../assets/images/dji-0774.jpeg" width="100px" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div
+    fxLayout="row"
+    fxLayoutAlign="end center"
+    fxLayout.lt-sm="column"
+    fxLayoutAlign.lt-sm="center stretch"
+  >
+    <button mat-flat-button color="primary" fxFlex.lt-sm="1 1 auto" (click)="router.navigate(['/news', article.pk])">
+      Read more
+    </button>
+  </div> -->
+  </div>
+</div>
